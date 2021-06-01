@@ -1,4 +1,4 @@
-package base;
+package components.http;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,9 +12,16 @@ public class SimpleHttpClient implements HttpClientInterface {
     private String method;
     private String url;
     private String body = "";
+    private String contentType = HttpClientInterface.TYPE_JSON;
 
     public SimpleHttpClient(HttpResponseInterface response) {
         this.response = response;
+    }
+
+    @Override
+    public HttpClientInterface setContentType(String type) {
+        this.contentType = type;
+        return this;
     }
 
     @Override
@@ -44,6 +51,7 @@ public class SimpleHttpClient implements HttpClientInterface {
     public HttpResponseInterface getResponse() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
+                .header("Content-Type", this.contentType)
                 .method(this.method, HttpRequest.BodyPublishers.ofString(this.body))
                 .uri(URI.create(this.url))
                 .build();

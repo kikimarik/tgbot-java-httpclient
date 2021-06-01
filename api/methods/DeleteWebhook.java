@@ -1,12 +1,14 @@
-package api;
+package api.methods;
+
+import api.ApiMethodInterface;
 
 import java.io.IOException;
 
-public class GetMe implements ApiMethodInterface {
+public class DeleteWebhook implements ApiMethodInterface {
 
     private final String httpMethod;
 
-    public GetMe(String httpMethod) {
+    public DeleteWebhook(String httpMethod) {
         this.httpMethod = httpMethod;
     }
 
@@ -17,10 +19,5 @@ public class GetMe implements ApiMethodInterface {
                 .setUrl(this.httpRoot + token + httpMethod)
                 .getResponse()
                 .getBody();
-    }
-
-    @Override
-    public void setQueryPath(String[] params) {
-        // Nothing to do
     }
 }

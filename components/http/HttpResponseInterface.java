@@ -1,4 +1,4 @@
-package base;
+package components.http;
 
 import java.net.http.HttpHeaders;
 
