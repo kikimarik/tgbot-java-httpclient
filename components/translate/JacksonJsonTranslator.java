@@ -9,7 +9,7 @@ import java.io.File;
 /* TODO implement other methods */
 public class JacksonJsonTranslator implements JsonTranslatorInterface {
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     
     @Override
     public void toFile(Object entity, File file) {
@@ -18,7 +18,6 @@ public class JacksonJsonTranslator implements JsonTranslatorInterface {
 
     @Override
     public void toFile(String jsonString, File file) {
-
     }
 
     @Override

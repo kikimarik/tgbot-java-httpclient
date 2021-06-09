@@ -2,6 +2,7 @@ package usage;
 
 import api.Client;
 import api.entities.ApiMethodDTO;
+import api.entities.methods.ForwardMessage;
 import api.entities.methods.SendMessage;
 
 public class Examples {
@@ -10,6 +11,7 @@ public class Examples {
         Examples.getMeExample();
         Examples.sendMessageExample();
         Examples.setWebhookExample();
+        Examples.forwardMessageExample();
     }
 
     /**
@@ -40,8 +42,26 @@ public class Examples {
         Client client = Client.getInstance();
         String response = client.send(token, new ApiMethodDTO(
                 "sendMessage",
-//                "{\"chat_id\": " + chatId + ", \"text\": \"" + text + "\"}"
                 new SendMessage(chatId, text).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of forwardMessage method
+     * @see <a href="https://core.telegram.org/bots/api#forwardmessage">Telegram api forwardMessage</a>
+     * Replace token, chatId, messageId vaiables with needle values
+     * It will forward target message to the same chat
+     */
+    private static void forwardMessageExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        int messageId = 15;
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "forwardMessage",
+                new ForwardMessage(chatId, chatId, messageId).toString()
         ));
         System.out.println(response);
     }

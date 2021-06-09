@@ -12,5 +12,6 @@ public final class RouteMap extends HashMap <String, ApiMethodInterface> {
         this.put("getWebhookInfo", new GetWebhookInfo("/getWebhookInfo"));
 
         this.put("sendMessage", new SendMessage("/sendMessage"));
+        this.put("forwardMessage", new SendMessage("/forwardMessage"));
     }
 }
