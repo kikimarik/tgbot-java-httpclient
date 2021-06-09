@@ -55,13 +55,14 @@ public class Examples {
      */
     private static void forwardMessageExample() {
         String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
-        int chatId = 1135629135;
-        int messageId = 15;
+        int chatId = 286973666;
+        int fromChatId = 1135629135;
+        int messageId = 25;
 
         Client client = Client.getInstance();
         String response = client.send(token, new ApiMethodDTO(
                 "forwardMessage",
-                new ForwardMessage(chatId, chatId, messageId).toString()
+                new ForwardMessage(chatId, fromChatId, messageId).toString()
         ));
         System.out.println(response);
     }
