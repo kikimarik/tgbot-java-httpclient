@@ -66,11 +66,6 @@ public class Examples {
                 new ForwardMessage(chatId, fromChatId, messageId).toString()
         ));
         System.out.println(response);
-        response = client.send(token, new ApiMethodDTO(
-                "copyMessage",
-                new CopyMessage(chatId, fromChatId, messageId).toString()
-        ));
-        System.out.println(response);
     }
 
     /**
