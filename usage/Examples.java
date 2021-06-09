@@ -2,6 +2,7 @@ package usage;
 
 import api.Client;
 import api.entities.ApiMethodDTO;
+import api.entities.methods.SendMessage;
 
 public class Examples {
 
@@ -39,7 +40,8 @@ public class Examples {
         Client client = Client.getInstance();
         String response = client.send(token, new ApiMethodDTO(
                 "sendMessage",
-                "{\"chat_id\": " + chatId + ", \"text\": \"" + text + "\"}"
+//                "{\"chat_id\": " + chatId + ", \"text\": \"" + text + "\"}"
+                new SendMessage(chatId, text).toString()
         ));
         System.out.println(response);
     }
