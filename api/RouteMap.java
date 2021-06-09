@@ -13,5 +13,6 @@ public final class RouteMap extends HashMap <String, ApiMethodInterface> {
 
         this.put("sendMessage", new SendMessage("/sendMessage"));
         this.put("forwardMessage", new SendMessage("/forwardMessage"));
+        this.put("copyMessage", new SendMessage("/copyMessage"));
     }
 }

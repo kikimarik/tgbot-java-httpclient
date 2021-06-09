@@ -2,6 +2,7 @@ package usage;
 
 import api.Client;
 import api.entities.ApiMethodDTO;
+import api.entities.methods.CopyMessage;
 import api.entities.methods.ForwardMessage;
 import api.entities.methods.SendMessage;
 
@@ -55,14 +56,19 @@ public class Examples {
      */
     private static void forwardMessageExample() {
         String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
-        int chatId = 286973666;
-        int fromChatId = 1135629135;
-        int messageId = 25;
+        int fromChatId = 286973666;
+        int chatId = 1135629135;
+        int messageId = 26;
 
         Client client = Client.getInstance();
         String response = client.send(token, new ApiMethodDTO(
                 "forwardMessage",
                 new ForwardMessage(chatId, fromChatId, messageId).toString()
+        ));
+        System.out.println(response);
+        response = client.send(token, new ApiMethodDTO(
+                "copyMessage",
+                new CopyMessage(chatId, fromChatId, messageId).toString()
         ));
         System.out.println(response);
     }
