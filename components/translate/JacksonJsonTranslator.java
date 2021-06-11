@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import components.translate.exception.JsonTranslatorException;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 
 /* TODO implement other methods */
 public class JacksonJsonTranslator implements JsonTranslatorInterface {
@@ -21,17 +23,21 @@ public class JacksonJsonTranslator implements JsonTranslatorInterface {
     }
 
     @Override
-    public String fromFile(String classname, File file) {
+    public String fromFile(Class<?> classname, File file) {
         return null;
     }
 
     @Override
-    public Object toObject(String classname, String jsonString) {
-        return null;
+    public Object toObject(Class<?> classname, String jsonString) {
+        try {
+            return mapper.readValue(jsonString, classname);
+        } catch (IOException exception) {
+            throw new JsonTranslatorException("Could not convert JSON string to object");
+        }
     }
 
     @Override
-    public Object toObject(String classname, File file) {
+    public Object toObject(Class<?> classname, File file) {
         return null;
     }
 
@@ -42,5 +48,10 @@ public class JacksonJsonTranslator implements JsonTranslatorInterface {
         } catch (JsonProcessingException exception) {
             throw new JsonTranslatorException("Could not convert to string");
         }
+    }
+
+    public HashMap<String, Object> toHashMap(Class<?> classname, String jsonString) {
+        Object object = this.toObject(classname, jsonString);
+        return mapper.convertValue(object, HashMap.class);
     }
 }

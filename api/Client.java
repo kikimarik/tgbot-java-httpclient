@@ -26,7 +26,6 @@ public class Client {
         }
         try {
             if (apiMethodImplementation instanceof ApiMethodWithBodyInterface) {
-                System.out.println(entity.getBody());
                 // TODO add body validation
                 ((ApiMethodWithBodyInterface) apiMethodImplementation).setBodyParams(entity.getBody());
             }

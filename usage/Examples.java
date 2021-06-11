@@ -2,9 +2,7 @@ package usage;
 
 import api.Client;
 import api.entities.ApiMethodDTO;
-import api.entities.methods.CopyMessage;
-import api.entities.methods.ForwardMessage;
-import api.entities.methods.SendMessage;
+import api.entities.methods.*;
 
 public class Examples {
 
@@ -13,6 +11,11 @@ public class Examples {
         Examples.sendMessageExample();
         Examples.setWebhookExample();
         Examples.forwardMessageExample();
+        Examples.sendPhotoExample();
+        Examples.sendAudioExample();
+        Examples.sendDocumentExample();
+        Examples.sendVideoExample();
+        Examples.sendAnimationExample();
     }
 
     /**
@@ -82,6 +85,96 @@ public class Examples {
         String response = client.send(token, new ApiMethodDTO(
                 "setWebhook",
                 new String[]{"url=" + url}
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendPhoto method
+     * @see <a href="https://core.telegram.org/bots/api#sendphoto">Telegram api sendPhoto</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendPhotoExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/testPhoto.png";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendPhoto",
+                new SendPhoto(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendAudio method
+     * @see <a href="https://core.telegram.org/bots/api#sendaudio">Telegram api sendAudio</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendAudioExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/umbrella.mp3";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendAudio",
+                new SendAudio(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendDocument method
+     * @see <a href="https://core.telegram.org/bots/api#senddocument">Telegram api sendDocument</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendDocumentExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/rabbitmq_routing.pdf";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendDocument",
+                new SendDocument(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendVideo method
+     * @see <a href="https://core.telegram.org/bots/api#sendvideo">Telegram api sendVideo</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendVideoExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/umbrella.mp4";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendVideo",
+                new SendVideo(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendAnimation method
+     * @see <a href="https://core.telegram.org/bots/api#sendanimation">Telegram api sendAnimation</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendAnimationExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/fuckup.gif";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendAnimation",
+                new SendAnimation(chatId, filePath).toString()
         ));
         System.out.println(response);
     }
