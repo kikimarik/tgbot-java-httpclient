@@ -3,6 +3,11 @@ package usage;
 import api.Client;
 import api.entities.ApiMethodDTO;
 import api.entities.methods.*;
+import api.entities.types.InputMediaAudio;
+import api.entities.types.InputMediaDocument;
+import api.entities.types.InputMediaPhoto;
+import api.entities.types.InputMediaVideo;
+import base.entities.types.InputMedia;
 
 public class Examples {
 
@@ -17,6 +22,7 @@ public class Examples {
         Examples.sendVideoExample();
         Examples.sendAnimationExample();
         Examples.sendVideoNoteExample();
+        Examples.sendMediaGroupExample();
     }
 
     /**
@@ -194,6 +200,30 @@ public class Examples {
         String response = client.send(token, new ApiMethodDTO(
                 "sendVideoNote",
                 new SendVideoNote(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendMediaGroup method
+     * @see <a href="https://core.telegram.org/bots/api#sendmediagroup">Telegram api sendMediaGroup</a>
+     * Replace token, videoFileId1, videoFileId2, photoFileId vaiables with needle values
+     */
+    private static void sendMediaGroupExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String videoFileId1 = "BAACAgIAAxkDAANaYMYeKSqhf6nN1SIX6mw_5yTfzDQAAkkQAALhJDBKqZWML9NtYmYfBA";
+        String videoFileId2 = "BAACAgIAAxkDAANbYMYeNOB0LVXDC7sZTR8TGTOEFlUAAksQAALhJDBKbVY28-twIhIfBA";
+        String photoFileId = "AgACAgIAAxkDAANcYMYfEhQmzvdfS1nQqaVSZiQewdEAAhu1MRvhJDBKWksKuwQDgxZONkOeLgADAQADAgADdwADgyEFAAEfBA";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendMediaGroup",
+                new SendMediaGroup(chatId, new InputMedia[] {
+                        new InputMediaVideo(videoFileId1),
+                        new InputMediaVideo(videoFileId2),
+                        new InputMediaPhoto(photoFileId)
+                }).toString()
         ));
         System.out.println(response);
     }
