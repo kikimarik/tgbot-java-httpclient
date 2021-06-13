@@ -24,5 +24,7 @@ public final class RouteMap extends HashMap <String, ApiMethodInterface> {
         this.put("sendVideoNote", new SendVideoNote("/sendVideoNote"));
 
         this.put("sendMediaGroup", new SendMediaGroup("/sendMediaGroup"));
+
+        this.put("sendLocation", new SendLocation("/sendLocation"));
     }
 }
