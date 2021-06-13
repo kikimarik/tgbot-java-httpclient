@@ -16,6 +16,7 @@ public class Examples {
         Examples.sendDocumentExample();
         Examples.sendVideoExample();
         Examples.sendAnimationExample();
+        Examples.sendVideoNoteExample();
     }
 
     /**
@@ -175,6 +176,24 @@ public class Examples {
         String response = client.send(token, new ApiMethodDTO(
                 "sendAnimation",
                 new SendAnimation(chatId, filePath).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendVideoNote method
+     * @see <a href="https://core.telegram.org/bots/api#sendvideonote">Telegram api sendVideoNote</a>
+     * Replace token, chatId, filePath vaiables with needle values
+     */
+    private static void sendVideoNoteExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String filePath = "/home/sergey/tmp/test_java/watterfall.mov";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendVideoNote",
+                new SendVideoNote(chatId, filePath).toString()
         ));
         System.out.println(response);
     }
