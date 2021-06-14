@@ -24,6 +24,12 @@ public class Examples {
         Examples.sendVideoNoteExample();
         Examples.sendMediaGroupExample();
         Examples.sendLocationExample();
+        Examples.editMessageLiveLocationExample();
+        Examples.stopMessageLiveLocationExample();
+        Examples.sendVenueExample();
+        Examples.sendContactExample();
+        Examples.sendPollExample();
+        Examples.sendDiceExample();
     }
 
     /**
@@ -244,6 +250,127 @@ public class Examples {
         String response = client.send(token, new ApiMethodDTO(
                 "sendLocation",
                 new SendLocation(chatId, lat, lon).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of editMessageLiveLocation method
+     * @see <a href="https://core.telegram.org/bots/api#editmessagelivelocation">Telegram api editMessageLiveLocation</a>
+     * Replace token, chatId, messageId, lat, lon variables with needed values
+     */
+    private static void editMessageLiveLocationExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        int messageId = 119;
+        float lat = (float) 30.7142700;
+        float lon = (float) -74.0059700;
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "editMessageLiveLocation",
+                new EditMessageLiveLocation(chatId, messageId, lat, lon).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of stopMessageLiveLocation method
+     * @see <a href="https://core.telegram.org/bots/api#stopmessagelivelocation">Telegram api stopMessageLiveLocation</a>
+     * Replace token, chatId, messageId variables with needed values
+     */
+    private static void stopMessageLiveLocationExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        int messageId = 119;
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "stopMessageLiveLocation",
+                new StopMessageLiveLocation(chatId, messageId).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendVenue method
+     * @see <a href="https://core.telegram.org/bots/api#sendvenue">Telegram api sendVenue</a>
+     * Replace token, chatId, lat, lon, title, address variables with needed values
+     */
+    private static void sendVenueExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        float lat = (float) 40.7142700;
+        float lon = (float) -74.0059700;
+        String title = "Such a good place";
+        String address = "272 W 115th St, New York, NY 10026";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendVenue",
+                new SendVenue(chatId, lat, lon, title, address).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendContact method
+     * @see <a href="https://core.telegram.org/bots/api#sendcontact">Telegram api sendContact</a>
+     * Replace token, chatId, phone, name variables with needed values
+     */
+    private static void sendContactExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String phone = "+79990990909";
+        String name = "Anonymous";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendContact",
+                new SendContact(chatId, phone, name).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendPoll method
+     * @see <a href="https://core.telegram.org/bots/api#sendpoll">Telegram api sendPoll</a>
+     * Replace token, chatId, question, option1, option2, option3 variables with needed values
+     */
+    private static void sendPollExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String question = "What is the most dangerous animal at the planet?";
+        String option1 = "White bear";
+        String option2 = "White shark";
+        String option3 = "Anopheles"; // right :D
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendPoll",
+                new SendPoll(chatId, question, new String[] {
+                        option1,
+                        option2,
+                        option3
+                }).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of sendDice method
+     * @see <a href="https://core.telegram.org/bots/api#senddice">Telegram api sendDice</a>
+     * Replace token, chatId, phone, name variables with needed values
+     */
+    private static void sendDiceExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int chatId = 1135629135;
+        String emoji = "⚽";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "sendDice",
+                new SendDice(chatId, emoji).toString()
         ));
         System.out.println(response);
     }
