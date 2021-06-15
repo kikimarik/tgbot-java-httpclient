@@ -1,10 +1,10 @@
 package usage;
 
+import api.ApiMethodInterface;
 import api.Client;
 import api.entities.ApiMethodDTO;
 import api.entities.methods.*;
-import api.entities.types.InputMediaAudio;
-import api.entities.types.InputMediaDocument;
+import api.entities.types.BotCommand;
 import api.entities.types.InputMediaPhoto;
 import api.entities.types.InputMediaVideo;
 import base.entities.types.InputMedia;
@@ -30,6 +30,10 @@ public class Examples {
         Examples.sendContactExample();
         Examples.sendPollExample();
         Examples.sendDiceExample();
+        Examples.getUserProfilePhotosExample();
+        Examples.getFileExample();
+        Examples.setMyCommandsExample();
+        Examples.getMyCommandsExample();
     }
 
     /**
@@ -360,7 +364,7 @@ public class Examples {
     /**
      * Simple example of sendDice method
      * @see <a href="https://core.telegram.org/bots/api#senddice">Telegram api sendDice</a>
-     * Replace token, chatId, phone, name variables with needed values
+     * Replace token, chatId, emoji, name variables with needed values
      */
     private static void sendDiceExample() {
         String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
@@ -373,5 +377,81 @@ public class Examples {
                 new SendDice(chatId, emoji).toString()
         ));
         System.out.println(response);
+    }
+
+    /**
+     * Simple example of getUserProfilePhotos method
+     * @see <a href="https://core.telegram.org/bots/api#getuserprofilephotos">Telegram api getUserProfilePhotos</a>
+     * Replace token, userId, offset, limit variables with needed values
+     */
+    private static void getUserProfilePhotosExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        int userId = 1135629135;
+        int offset = 0;
+        int limit = 10;
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "getUserProfilePhotos",
+                new GetUserProfilePhotos(userId, offset, limit).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of getFile method
+     * @see <a href="https://core.telegram.org/bots/api#getfile">Telegram api getFile</a>
+     * Replace token, fileId variables with needed values
+     */
+    private static void getFileExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        String fileId = "AgACAgIAAxUAAWDIXahYc-Oe8tvoJNbUcTO2VTTrAAJ8rjEbCOuRSG-Wh0tknFT-P1DFki4AAwEAAwIAA2MAA7m_AAIfBA";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "getFile",
+                new GetFile(fileId).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of setMyCommands method
+     * @see <a href="https://core.telegram.org/bots/api#setmycommands">Telegram api setMyCommands</a>
+     * Replace token, command1, desc1, command2, desc2 variables with needed values
+     */
+    private static void setMyCommandsExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+        String command1 = "status";
+        String desc1 = "Get current order status";
+        String command2 = "cancel";
+        String desc2 = "Cancel current order";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "setMyCommands",
+                new SetMyCommands(new BotCommand[] {
+                        new BotCommand(command1, desc1),
+                        new BotCommand(command2, desc2)
+                }).toString()
+        ));
+        System.out.println(response);
+    }
+
+    /**
+     * Simple example of getMyCommands method
+     * @see <a href="https://core.telegram.org/bots/api#getmycommands">Telegram api getMyCommands</a>
+     * Replace token vaiable value with your token
+     */
+    private static void getMyCommandsExample() {
+        String token = "1804045124:AAFKjv7mBXqR-7RNc5EWtywH-igvKI7izcQ";
+
+        Client client = Client.getInstance();
+        String response = client.send(token, new ApiMethodDTO(
+                "getMyCommands"
+        ));
+        System.out.println(response);
+        Object getMyCommandsResponse = ApiMethodInterface.serviceLocator.getJsonTranslator().toObject(Object.class, response);
+        System.out.println(getMyCommandsResponse);
     }
 }
