@@ -1,23 +1,11 @@
 package api.methods;
 
 import api.ApiMethodInterface;
+import base.api.ApiGetMethod;
 
-import java.io.IOException;
-
-public class DeleteWebhook implements ApiMethodInterface {
-
-    private final String httpMethod;
+public class DeleteWebhook extends ApiGetMethod implements ApiMethodInterface {
 
     public DeleteWebhook(String httpMethod) {
         this.httpMethod = httpMethod;
-    }
-
-    @Override
-    public String send(String token) throws IOException, InterruptedException {
-        return this.serviceLocator.getClient()
-                .setMethod("GET")
-                .setUrl(this.httpRoot + token + httpMethod)
-                .getResponse()
-                .getBody();
     }
 }

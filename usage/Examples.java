@@ -1,6 +1,5 @@
 package usage;
 
-import api.ApiMethodInterface;
 import api.Client;
 import api.entities.ApiMethodDTO;
 import api.entities.methods.*;
@@ -451,7 +450,5 @@ public class Examples {
                 "getMyCommands"
         ));
         System.out.println(response);
-        Object getMyCommandsResponse = ApiMethodInterface.serviceLocator.getJsonTranslator().toObject(Object.class, response);
-        System.out.println(getMyCommandsResponse);
     }
 }

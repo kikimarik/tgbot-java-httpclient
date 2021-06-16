@@ -7,6 +7,13 @@ public class SendPoll {
     public String question;
     public String[] options;
 
+    public boolean is_anonymous = true;
+    public String type = "regular";
+    public boolean allows_multiple_answers = false;
+    public Integer correct_option_id;
+    public String explanation;
+    public String explanation_parse_mode;
+
     public SendPoll() {
     }
 
