@@ -1,12 +1,17 @@
 package api.entities.methods;
 
 import api.ApiMethodInterface;
+import api.entities.types.ReplyMarkup;
 
 public class EditMessageLiveLocation {
     public int chat_id;
     public int message_id;
     public float latitude;
     public float longitude;
+    public Float horizontal_accuracy;
+    public Integer heading;
+    public Integer proximity_alert_radius;
+    public ReplyMarkup reply_markup;
 
     public EditMessageLiveLocation() {
     }

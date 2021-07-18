@@ -1,6 +1,8 @@
 package api.entities.methods;
 
 import api.ApiMethodInterface;
+import api.entities.types.MessageEntity;
+import api.entities.types.ReplyMarkup;
 
 public class SendPoll {
     public int chat_id;
@@ -13,6 +15,14 @@ public class SendPoll {
     public Integer correct_option_id;
     public String explanation;
     public String explanation_parse_mode;
+    public MessageEntity[] explanation_entities;
+    public Integer open_period;
+    public Integer close_date;
+    public Boolean is_closed;
+    public Boolean disable_notification;
+    public Integer reply_to_message_id;
+    public Boolean allow_sending_without_reply;
+    public ReplyMarkup reply_markup;
 
     public SendPoll() {
     }

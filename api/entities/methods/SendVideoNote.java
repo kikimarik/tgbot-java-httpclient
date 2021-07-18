@@ -1,13 +1,21 @@
 package api.entities.methods;
 
 import api.ServiceLocator;
+import api.entities.types.MessageEntity;
+import api.entities.types.ReplyMarkup;
 
 import java.util.LinkedHashMap;
 
-/* TODO add all properties */
 public class SendVideoNote {
     public int chat_id;
     public LinkedHashMap<String, String> video_note;
+    public Integer length;
+    public Boolean disable_notification;
+    public Integer reply_to_message_id;
+    public Boolean allow_sending_without_reply;
+    public ReplyMarkup reply_markup;
+    public Integer duration;
+    public LinkedHashMap<String, String> thumb;
 
     public SendVideoNote(int chatId, String filePath) {
         this.chat_id = chatId;
@@ -21,6 +29,10 @@ public class SendVideoNote {
 
     public void setVideo_note(LinkedHashMap<String, String> filePathMap) {
         this.video_note = filePathMap;
+    }
+
+    public void setThumb(LinkedHashMap<String, String> filePathMap) {
+        this.thumb = filePathMap;
     }
 
     @Override

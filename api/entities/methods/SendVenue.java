@@ -1,6 +1,7 @@
 package api.entities.methods;
 
 import api.ApiMethodInterface;
+import api.entities.types.ReplyMarkup;
 
 public class SendVenue {
     public int chat_id;
@@ -8,6 +9,14 @@ public class SendVenue {
     public float longitude;
     public String title;
     public String address;
+    public String foursquare_id;
+    public String foursquare_type;
+    public String google_place_id;
+    public String google_place_type;
+    public Boolean disable_notification;
+    public Integer reply_to_message_id;
+    public Boolean allow_sending_without_reply;
+    public ReplyMarkup reply_markup;
 
     public SendVenue() {
     }

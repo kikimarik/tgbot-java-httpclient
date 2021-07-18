@@ -1,10 +1,12 @@
 package api.entities.methods;
 
 import api.ApiMethodInterface;
+import api.entities.types.ReplyMarkup;
 
 public class StopMessageLiveLocation {
     public int chat_id;
     public int message_id;
+    public ReplyMarkup reply_markup;
 
     public StopMessageLiveLocation() {
     }

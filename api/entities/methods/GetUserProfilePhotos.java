@@ -2,7 +2,6 @@ package api.entities.methods;
 
 import api.ServiceLocator;
 
-/* TODO add all properties */
 public class GetUserProfilePhotos {
     public final int user_id;
     public final int offset;

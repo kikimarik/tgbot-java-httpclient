@@ -1,13 +1,23 @@
 package api.entities.methods;
 
 import api.ServiceLocator;
+import api.entities.types.MessageEntity;
+import api.entities.types.ReplyMarkup;
 
 import java.util.LinkedHashMap;
 
-/* TODO add all properties */
 public class SendDocument {
     public int chat_id;
     public LinkedHashMap<String, String> document;
+    public String caption;
+    public String parse_mode;
+    public MessageEntity[] caption_entities;
+    public Boolean disable_notification;
+    public Integer reply_to_message_id;
+    public Boolean allow_sending_without_reply;
+    public ReplyMarkup reply_markup;
+    public Boolean disable_content_type_detection;
+    public LinkedHashMap<String, String> thumb;
 
     public SendDocument(int chatId, String filePath) {
         this.chat_id = chatId;
@@ -21,6 +31,10 @@ public class SendDocument {
 
     public void setDocument(LinkedHashMap<String, String> filePathMap) {
         this.document = filePathMap;
+    }
+
+    public void setThumb(LinkedHashMap<String, String> filePathMap) {
+        this.thumb = filePathMap;
     }
 
     @Override
