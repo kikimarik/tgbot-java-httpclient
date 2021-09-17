@@ -6,7 +6,6 @@ import api.entities.types.ReplyMarkup;
 
 import java.util.LinkedHashMap;
 
-/* TODO add all properties */
 public class SendVoice {
     public int chat_id;
     public LinkedHashMap<String, String> voice;

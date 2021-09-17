@@ -2,7 +2,6 @@ package api.entities.methods;
 
 import api.ServiceLocator;
 
-/* TODO add all properties */
 public class GetFile {
     public final String file_id;
 

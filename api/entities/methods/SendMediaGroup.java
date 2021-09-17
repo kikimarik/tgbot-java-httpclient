@@ -3,7 +3,6 @@ package api.entities.methods;
 import api.ServiceLocator;
 import base.entities.types.InputMedia;
 
-/* TODO add all properties */
 public class SendMediaGroup {
     public int chat_id;
     public InputMedia[] media;

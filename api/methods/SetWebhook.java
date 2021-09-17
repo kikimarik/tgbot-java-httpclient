@@ -24,7 +24,6 @@ public class SetWebhook implements ApiMethodWithParamsInterface {
 
     @Override
     public void setQueryParams(String[] params) {
-        // TODO change to Map
         char separator = '?';
         StringBuilder buffer = new StringBuilder();
         for (String param:
